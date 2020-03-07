@@ -5,24 +5,34 @@
     <title>Home page</title>
     <body>
       <h1>Shopping Cart</h1>
-      
       <h2>Your shopping cart:</h2>
       <table>
         <tr>
-          <th>Item</th><th>Cost</th>
+          <th>Item</th>
+          <th>Cost</th>
+          <th>Delete</th>
         </tr>
+        {% for result in results %}
         <tr>
-          {% for result in results %}
-          <td><rt>{{result[1]}}</td>
-          <td>${{result[2]}}</tr></td>
-          {% endfor %}
-          </tr>
-        </table>
-        <form actions="/add" method="post"></form>
-        <h2>Enter a new item</h2>
-        <input type="text" name="item">
-        <input type="integer" name="cost">
-        <input type="submit" value="add">
+          <td>{{result[1]}}</td>
+          <td>${{result[2]}}</td>
+          <td>
+            <form action="/delete" method="post">
+            <input type="hidden" name="item_name" value="{{result[0]}}">
+            <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <form action="/add" method="POST">
+      <h2>Enter a new item</h2>
+      <input type="text" name="item_name">
+      <input type="integer" name="item_cost">
+      <button type="submit">Add</button>
+      </form>
+
+
     </body>
 
     <style>
