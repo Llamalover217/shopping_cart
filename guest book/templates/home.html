@@ -1,0 +1,56 @@
+<html>
+    <head>
+
+    </head>
+    <title>Home page</title>
+    <body>
+      <h1>Shopping Cart</h1>
+      
+      <h2>Your shopping cart:</h2>
+      <table>
+        <tr>
+          <th>Item</th><th>Cost</th>
+        </tr>
+        <tr>
+          {% for result in results %}
+          <td><rt>{{result[1]}}</td>
+          <td>${{result[2]}}</tr></td>
+          {% endfor %}
+          </tr>
+        </table>
+        <form actions="/add" method="post"></form>
+        <h2>Enter a new item</h2>
+        <input type="text" name="item">
+        <input type="integer" name="cost">
+        <input type="submit" value="add">
+    </body>
+
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 50%;
+        }
+      
+        body {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 50%;
+        }
+        
+        td {
+          border: 2px solid #000000b7;
+          text-align: left;
+          padding: 8px;
+        }
+
+        th {
+          border: 2px solid #000000b7;
+          text-align: left;
+          padding: 8px;
+        }
+        tr {
+          background-color: #ffffff;
+        }
+      </style>
+</html>
